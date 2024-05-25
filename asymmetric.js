@@ -13,20 +13,21 @@ const { privateKey, publicKey } = generateKeyPairSync('rsa', {
     format: 'pem',
   },
 });
-
-
+console.log(publicKey);
+var secretMessage = "I am Blockchain Expert!";
 const encryptedData = publicEncrypt(
     publicKey,
     Buffer.from(secretMessage)
   );
 
+  
+console.log("encryptedData: ",encryptedData.toString('hex'))
 
-console.log(encryptedData.toString('hex'))
-
+console.log(privateKey);
 
 const decryptedData = privateDecrypt(
     privateKey,
     encryptedData
 );
 
-console.log(decryptedData.toString('utf-8'));
+console.log("decryptedData: ",decryptedData.toString('utf-8'));
